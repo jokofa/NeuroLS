@@ -1,0 +1,86 @@
+# @package _global_
+
+# tensorboard --host localhost --port 8080 --logdir=./outputs
+
+run_type: "test"
+debug_lvl: 0  # 0 disables debugging and verbosity completely, >1 activates additional debugging functionality
+global_seed: 1234
+cuda: True
+
+# global paths and logging
+log_lvl: INFO
+tb_log_path: 'logs/tb/'
+val_log_path: 'logs/val/'
+test_log_path: 'logs/test/'
+checkpoint_save_path: 'checkpoints/'
+
+
+# SELECT_EPSILON-SET-ALL
+### 15x15 ###
+checkpoint_load_path: checkpoints/jssp_15x15_uniform/SELECT_EPSILON-SET-ALL/ep80(last)_model_rew=0.002940.ckpt
+### 20x15 ###
+#checkpoint_load_path: checkpoints/jssp_20x15_uniform/SELECT_EPSILON-SET-ALL/ep72_model_rew=0.007835.ckpt
+### 20x20 ###
+#checkpoint_load_path: checkpoints/jssp_20x20_uniform/SELECT_EPSILON-SET-ALL/ep80(last)_model_rew=0.002427.ckpt
+### 30x15, 50x15 ###
+#checkpoint_load_path: checkpoints/jssp_30x15_uniform/SELECT_EPSILON-SET-ALL/ep80(last)_model_rew=0.006589.ckpt
+### 30x20, 50x20, 100x20 ###
+#checkpoint_load_path: checkpoints/jssp_30x20_uniform/SELECT_EPSILON-SET-ALL/ep80(last)_model_rew=0.005346.ckpt
+
+
+# SELECT_EPSILON-SELECT_LS-ALL
+### 15x15 ###
+#checkpoint_load_path: checkpoints/jssp_15x15_uniform/SELECT_EPSILON-SELECT_LS-ALL/ep80(last)_model_rew=0.005254.ckpt
+### 20x15 ###
+#checkpoint_load_path: checkpoints/jssp_20x15_uniform/SELECT_EPSILON-SELECT_LS-ALL/ep32_model_rew=0.008802.ckpt
+### 20x20 ###
+#checkpoint_load_path: checkpoints/jssp_20x20_uniform/SELECT_EPSILON-SELECT_LS-ALL/ep58_model_rew=0.016140.ckpt
+### 30x15, 50x15 ###
+#checkpoint_load_path: checkpoints/jssp_30x15_uniform/SELECT_EPSILON-SELECT_LS-ALL/ep80(last)_model_rew=0.006254.ckpt
+### 30x20, 50x20, 100x20 ###
+#checkpoint_load_path: checkpoints/jssp_30x20_uniform/SELECT_EPSILON-SELECT_LS-ALL/ep80(last)_model_rew=0.007418.ckpt
+
+
+# SELECT_EPSILON-SELECT_LS+-ALL
+### 15x15 ###
+#checkpoint_load_path: checkpoints/jssp_15x15_uniform/SELECT_EPSILON-SELECT_LS+-ALL/ep25_model_rew=0.008621.ckpt
+### 20x15 ###
+#checkpoint_load_path: checkpoints/jssp_20x15_uniform/SELECT_EPSILON-SELECT_LS+-ALL/ep64_model_rew=0.007597.ckpt
+### 20x20 ###
+#checkpoint_load_path: checkpoints/jssp_20x20_uniform/SELECT_EPSILON-SELECT_LS+-ALL/ep80(last)_model_rew=0.009907.ckpt
+### 30x15, 50x15 ###
+#checkpoint_load_path: checkpoints/jssp_30x15_uniform/SELECT_EPSILON-SELECT_LS+-ALL/ep74_model_rew=0.009175.ckpt
+### 30x20, 50x20, 100x20 ###
+#checkpoint_load_path: checkpoints/jssp_30x20_uniform/SELECT_EPSILON-SELECT_LS+-ALL/ep50_model_rew=0.007674.ckpt
+
+
+monitor_cfg: {}
+checkpoint_cfg: {}
+trainer_cfg: {}
+#
+tester_cfg:
+  test_dataset_size: 4 #512
+  test_batch_size: 1 #8
+  render: True
+  num_render_eps: 2
+
+  test_env_cfg:
+    fixed_dataset: True
+    data_file_path: data/JSSP/jssp${num_jobs}x${num_machines}/data_val_seed123_size512_${duration_dist}.pt
+
+  env_kwargs:
+    construction_args:
+      method: 'FDD_MWKR'
+    num_steps: 100
+    acceptance_mode: 'SELECT_EPSILON'
+    operator_mode:  'SET' # 'SELECT_LS' # 'SELECT_LS+'
+    position_mode: 'ALL'
+    mode_args:
+      search_criterion: 'best'
+      selection_criterion: 'greedy' # 'sampling' #
+      ls_ops: ['CET']
+      random_shuffle: True #False
+      num_nodes_per_iter: 1
+      epsilon: 0.2
+      restart_at_step: 2
+      restart_mode: "perturb"

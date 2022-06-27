@@ -1,0 +1,14 @@
+# @package _global_
+
+has_overrides: True
+
+model_cfg:
+
+  encoder_args:
+    node_encoder_cfg:
+      num_nbh_layers: 3
+      num_sol_layers: 2
+      propagate_reverse: True
+      propagate_best: False
+      consolidate_nbh: True
+

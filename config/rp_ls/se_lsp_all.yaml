@@ -1,0 +1,18 @@
+# @package _global_
+
+env_kwargs:
+  num_steps: 200
+  acceptance_mode: 'SELECT_EPSILON'
+  operator_mode: 'SELECT_LS+'
+  position_mode: 'ALL'
+  construction_args:
+    method: 'savings'
+  mode_args:
+    ls_ops: #
+    accept_rule: 'BEST_ACCEPT'
+    random_shuffle: True
+    num_iters: 1
+    num_nodes_per_iter: 1
+    epsilon: 0.1
+    restart_at_step: 8
+    restart_mode: "initial"

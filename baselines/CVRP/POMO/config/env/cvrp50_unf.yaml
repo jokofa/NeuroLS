@@ -1,0 +1,6 @@
+# @package _global_
+# problem args
+
+problem: "cvrp"
+graph_size: 50
+coords_dist: 'uniform'

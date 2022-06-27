@@ -1,0 +1,18 @@
+# @package _global_
+# policy config
+
+policy: "SA"
+
+env_kwargs:
+  num_steps: 100
+  mode_args:
+    restart_at_step: 0 #32
+
+policy_cfg:
+  tau_init: 10.0
+  tau_final: 0.0
+  alpha: 0.95
+  cooling_schedule: "exp_add" #"lin"
+  acceptance_criterion: "metropolis"
+  num_max_steps: ${env_kwargs.num_steps}
+  restart_at_step: ${env_kwargs.mode_args.restart_at_step}

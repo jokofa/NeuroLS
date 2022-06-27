@@ -1,0 +1,16 @@
+# @package _global_
+
+run_type: "val"
+debug_lvl: 0  # 0 disables debugging and verbosity completely, >1 activates additional debugging functionality
+global_seed: 1234
+
+# global paths and logging
+log_lvl: INFO
+tb_log_path: 'logs/tb/'
+log_path: 'logs/'
+
+data_file_path: data/CVRP/cvrp${graph_size}/data_test_seed234_size1000_${coords_dist}.pt
+generator_args: {}
+dataset_size: 1000
+batch_size: 1 #8      # number of workers
+strict_max_num: False

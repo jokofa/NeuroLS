@@ -1,0 +1,8 @@
+# @package _global_
+# policy config
+
+policy: "PDR"
+
+policy_cfg:
+  seed: #
+  method: "FDD_MWKR"

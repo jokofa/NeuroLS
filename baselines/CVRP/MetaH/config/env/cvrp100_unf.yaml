@@ -1,0 +1,22 @@
+# @package _global_
+# problem args
+
+problem: "cvrp"
+graph_size: 100
+coords_dist: 'uniform'
+
+# Env cfg
+env_cfg:
+  share_memory: False
+  create_nbh_graph: False
+  fixed_dataset: True
+
+# RP Env cfg
+env_kwargs:
+  generator_args:
+    coords_sampling_dist: ${coords_dist}
+  sampling_args:
+    sample_size: 1000
+    graph_size: ${graph_size}
+    k: 32
+    cap: 50

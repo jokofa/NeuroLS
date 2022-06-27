@@ -1,0 +1,9 @@
+# @package _global_
+# policy config
+
+policy: "POMO"
+
+# all model params are already "hardcoded" into run file
+rollout_cfg:
+  augment: True    # flag to use 8-fold instance data augmentation
+  single_trajectory: False   # flag to only sample a single trajectory

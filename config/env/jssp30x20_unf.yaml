@@ -1,0 +1,34 @@
+# @package _global_
+# problem args
+
+problem: "jssp"
+num_jobs: 30
+num_machines: 20
+duration_dist: 'uniform'
+
+# general VecEnv cfg
+env_cfg:
+  share_memory: False
+  fixed_dataset: False
+  create_nbh_graph: False
+
+# JSSP Env cfg
+env_kwargs:
+  generator_args: {}
+  sampling_args:
+    sample_size: 1024
+    num_jobs: ${num_jobs}
+    num_machines: ${num_machines}
+
+
+# overwrites for validation env
+val_env_cfg:
+  fixed_dataset: True
+  data_file_path: data/JSSP/jssp${num_jobs}x${num_machines}/data_val_seed123_size512_${duration_dist}.pt
+
+
+tester_cfg:
+  # overwrites for test env
+  test_env_cfg:
+    fixed_dataset: True
+    data_file_path: data/JSSP/jssp${num_jobs}x${num_machines}/data_test_seed234_size1000_${duration_dist}.pt

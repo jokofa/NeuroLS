@@ -1,0 +1,12 @@
+# @package _global_
+# policy config
+
+policy: "GLS"
+
+policy_cfg:
+  first_solutions_strategy: 'PATH_CHEAPEST_ARC' # 'SAVINGS' #
+  local_search_strategy: 'GUIDED_LOCAL_SEARCH'
+  time_limit: #2
+  solution_limit: 100 #None
+  verbose: False
+  log_search: False

@@ -1,0 +1,27 @@
+# @package _global_
+# policy config
+
+policy: "VNS"
+num_steps: 100
+
+policy_cfg:
+  restart_at_step: 2
+
+env_kwargs:
+  construction_args:
+    method: 'savings'
+  num_steps: ${num_steps}
+  acceptance_mode: 'ACCEPT_EPSILON'
+  operator_mode: 'SELECT_LS'
+  position_mode: 'ALL'
+  mode_args:
+    ls_ops: #
+    accept_rule: 'BEST_ACCEPT'
+    random_shuffle: True
+    num_iters: 1
+    num_nodes_per_iter: 5
+    epsilon: 0.001
+    restart_at_step: ${policy_cfg.restart_at_step}
+    restart_mode: "perturb"
+    restart_args:
+      iters: 3

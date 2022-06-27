@@ -1,0 +1,31 @@
+# @package _global_
+# policy config
+
+policy: "SA"
+num_steps: 100
+
+policy_cfg:
+  tau_init: 10.0
+  tau_final: 0.0
+  alpha: 0.8
+  cooling_schedule: "exp_add"
+  acceptance_criterion: "metropolis"
+  num_max_steps: ${num_steps}
+  restart_at_step: 0 #32
+
+env_kwargs:
+  construction_args:
+    method: 'savings'
+  num_steps: ${num_steps}
+  acceptance_mode: 'SELECT_EPSILON'
+  operator_mode: 'SET'
+  position_mode: 'ALL'
+  mode_args:
+    ls_ops: ['TWO_OPT']
+    accept_rule: 'BEST_ACCEPT'
+    random_shuffle: True
+    num_iters: 1
+    num_nodes_per_iter: 5
+    epsilon: 0.15
+    restart_at_step: ${policy_cfg.restart_at_step}
+    restart_mode: "initial"

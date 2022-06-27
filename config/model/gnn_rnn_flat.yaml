@@ -1,0 +1,47 @@
+# @package _global_
+# model parameters
+
+model: "GNN_RNN_flat"
+
+model_cfg:
+  embedding_dim: 128
+
+  # encoder
+  # ==============================================
+  encoder_args:
+    node_encoder_type: "GNNNodeEncoder"
+    node_encoder_cfg:
+      hidden_dim: 128
+      num_nbh_layers: 3
+      num_sol_layers: 0
+      propagate_reverse: False
+      propagate_best: False
+      consolidate_nbh: False
+      conv_type: "GraphConv"
+      activation: "gelu"
+      skip: True
+      norm_type: "ln"
+      add_linear: False
+
+    sol_encoder_type: "RNNSolEncoder"
+    sol_encoder_cfg:
+      hidden_dim: 128
+      num_layers: 1
+      propagate_reverse: True
+      propagate_best: False
+      rnn_type: "GRU"
+
+  # aggregator
+  # ==============================================
+  aggregator_args:
+    components: [ "node_feature_emb", "current_sol_emb", "meta_feature_emb" ]
+    pooling: [ "mean", "mean", "none" ]
+    combination: "cat"
+
+  # decoder
+  # ==============================================
+  decoder_type: "FFDecoder"
+  decoder_args:
+    hidden_dim: 128
+    num_layers: 2
+    activation: "gelu"

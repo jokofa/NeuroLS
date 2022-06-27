@@ -1,0 +1,46 @@
+#
+from lib.routing.local_search.definitions import *
+
+ACTIONS = [
+    ONE_POINT_MOVE,
+    TWO_POINT_MOVE,
+    TWO_OPT,
+    THREE_POINT_MOVE,
+    THREE_OPT,
+    OR_OPT,
+    CROSS_EXCHANGE,
+]
+
+PERTURBATIONS = [
+    PERTURB_LI,
+    PERTURB_OSMAN,
+    PERTURB_TARGET,
+]
+
+ACCEPTANCE_CRITERION = [
+    VRPH_FIRST_ACCEPT,
+    VRPH_LI_ACCEPT,
+    VRPH_BEST_ACCEPT
+]
+
+ACTIONS_NAMES = [
+    'ONE_POINT_MOVE',
+    'TWO_POINT_MOVE',
+    'TWO_OPT',
+    'THREE_POINT_MOVE',
+    'THREE_OPT',
+    'OR_OPT',
+    'CROSS_EXCHANGE',
+]
+
+PERTURBATIONS_NAMES = [
+    'PERTURB_LI',
+    'PERTURB_OSMAN',
+    'PERTURB_TARGET',
+]
+
+ACCEPTANCE_CRITERION_NAMES = [
+    'FIRST_ACCEPT',
+    'LI_ACCEPT',
+    'BEST_ACCEPT'
+]

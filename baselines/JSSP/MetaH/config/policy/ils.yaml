@@ -1,0 +1,29 @@
+# @package _global_
+# policy config
+
+policy: "ILS"
+
+policy_cfg:
+  use_sa: False
+  restart_at_step: 4    # 4 for ILS / 16 for SA
+  # SA params
+  tau_init: 10.0
+  tau_final: 0.0
+  alpha: 0.8
+  cooling_schedule: "exp_add"
+  acceptance_criterion: "metropolis"
+  num_max_steps: ${env_kwargs.num_steps}
+
+env_kwargs:
+  num_steps: 200
+  acceptance_mode: 'SELECT_EPSILON'
+  operator_mode: 'SET'
+  position_mode: 'ALL'
+  mode_args:
+    search_criterion: 'best'
+    selection_criterion: 'greedy'
+    epsilon: 0.001
+    restart_at_step: ${policy_cfg.restart_at_step}
+    restart_mode: "perturb"
+    restart_args:
+      iters: 3

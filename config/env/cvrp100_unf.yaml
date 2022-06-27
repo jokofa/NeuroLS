@@ -1,0 +1,36 @@
+# @package _global_
+# problem args
+
+problem: "cvrp"
+graph_size: 100
+coords_dist: 'uniform'
+
+# general VecEnv cfg
+env_cfg:
+  share_memory: False
+  fixed_dataset: False
+  create_nbh_graph: True    # automatically set to False for FFEncoder
+  k_nbh_frac: 16
+
+# RP Env cfg
+env_kwargs:
+  generator_args:
+    coords_sampling_dist: ${coords_dist}
+  sampling_args:
+    sample_size: 1024
+    graph_size: ${graph_size}
+    k: 32
+    cap: 50
+
+
+# overrides for validation env
+val_env_cfg:
+  fixed_dataset: True
+  data_file_path: data/CVRP/cvrp${graph_size}/data_val_seed123_size512_${coords_dist}.pt
+
+
+tester_cfg:
+  # overrides for test env
+  test_env_cfg:
+    fixed_dataset: True
+    data_file_path: data/CVRP/cvrp${graph_size}/data_test_seed234_size1000_${coords_dist}.pt

@@ -1,0 +1,51 @@
+# @package _global_
+
+# tensorboard --host localhost --port 8080 --logdir=./outputs
+
+run_type: "train"
+debug_lvl: 0  # 0 disables debugging and verbosity completely, >1 activates additional debugging functionality
+global_seed: 1234
+cuda: True
+
+# global paths and logging
+log_lvl: INFO
+tb_log_path: 'logs/tb/'
+val_log_path: 'logs/val/'
+test_log_path: 'logs/test/'
+checkpoint_save_path: 'checkpoints/'
+checkpoint_load_path: #
+
+
+# global training args
+train_batch_size: 16      # number of training envs
+update_batch_size: 400 #256    # size of mini batch for model parameter updates
+val_dataset_size: 512
+val_batch_size: 16        # number of val envs
+
+replay_buffer_cfg:
+  total_size: 20000
+
+eval_metric_key: 'rew'
+render_val: False      # requires val_batch_size = 1 (?)
+
+checkpoint_cfg:
+  compare_mode: 'max'   # comparison mode of eval metric (rew -> max, cost -> min)
+  top_k: 3      # always keep top_k best model checkpoints
+  save_last: True   # always safe last model checkpoint no matter how good
+
+
+monitor_cfg:
+  train_interval: 1000   # log training results every train_interval steps
+  update_interval: 2000  # log update results every update_interval steps
+  test_interval: 1       # log test results every test_interval epochs
+  save_interval: 1       # save checkpoint every save_interval epochs if val metric is better
+
+
+trainer_cfg:
+  max_epoch: 50             # number of training epochs -> 50x25600 = 1280000 transitions
+  step_per_epoch: 19200 #12800 #25600     # the number of transitions collected per epoch.
+  step_per_collect: 128     # the number of transitions the collector would collect before the network update
+                            # 128/32 = 4 transitions per env
+
+#
+tester_cfg: {}

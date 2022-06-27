@@ -1,0 +1,20 @@
+# @package _global_
+
+env_kwargs:
+  num_steps: 100
+  acceptance_mode: 'ACCEPT_EPSILON'
+  operator_mode: 'SELECT_LS+'
+  position_mode: 'ALL'
+  construction_args:
+    method: 'FDD_MWKR'
+  mode_args:
+    search_criterion: 'best'
+    selection_criterion: 'greedy'
+    ls_ops: #
+    random_shuffle: True
+    num_nodes_per_iter: 1
+    epsilon: 0.01
+    restart_at_step: 32
+    restart_mode: "initial"
+    restart_args:
+      iters: 3

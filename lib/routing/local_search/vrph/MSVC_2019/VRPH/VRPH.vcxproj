@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{938B0F92-0A0F-45EA-BAE5-E89FAAF76CDB}</ProjectGuid>
+    <RootNamespace>VRPH</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <TargetExt>.pyd</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetExt>.pyd</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <TargetExt>.pyd</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetExt>.pyd</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Users\inbox\miniconda3\envs\routing\lib\site-packages\pybind11\include;C:\Users\inbox\miniconda3\envs\routing\Include;C:\Users\inbox\miniconda3\envs\routing\include;..\..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalOptions>/permissive- %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\inbox\miniconda3\envs\routing\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>C:\Users\inbox\anaconda3\envs\l2o\lib\site-packages\pybind11\include;C:\Users\inbox\anaconda3\envs\l2o\Include;C:\Users\inbox\anaconda3\envs\l2o\include;..\..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;NDEBUG;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/permissive- %(AdditionalOptions)</AdditionalOptions>
+      <SDLCheck>true</SDLCheck>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\inbox\anaconda3\envs\l2o\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>C:\Users\inbox\miniconda3\envs\routing\lib\site-packages\pybind11\include;C:\Users\inbox\miniconda3\envs\routing\Include;C:\Users\inbox\miniconda3\envs\routing\include;..\..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/permissive- %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\inbox\miniconda3\envs\routing\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>C:\Users\inbox\anaconda3\envs\l2o\lib\site-packages\pybind11\include;C:\Users\inbox\anaconda3\envs\l2o\Include;C:\Users\inbox\anaconda3\envs\l2o\include;..\..\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_WINDLL;NDEBUG;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalOptions>/permissive- %(AdditionalOptions)</AdditionalOptions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\inbox\anaconda3\envs\l2o\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\ClarkeWright.cpp" />
+    <ClCompile Include="..\..\src\Concatenate.cpp" />
+    <ClCompile Include="..\..\src\CrossExchange.cpp" />
+    <ClCompile Include="..\..\src\Custom_Solvers.cpp" />
+    <ClCompile Include="..\..\src\Flip.cpp" />
+    <ClCompile Include="..\..\src\module.cpp" />
+    <ClCompile Include="..\..\src\MoveString.cpp" />
+    <ClCompile Include="..\..\src\OnePointMove.cpp" />
+    <ClCompile Include="..\..\src\OrOpt.cpp" />
+    <ClCompile Include="..\..\src\Postsert.cpp" />
+    <ClCompile Include="..\..\src\Presert.cpp" />
+    <ClCompile Include="..\..\src\RNG.cpp" />
+    <ClCompile Include="..\..\src\Swap.cpp" />
+    <ClCompile Include="..\..\src\SwapEnds.cpp" />
+    <ClCompile Include="..\..\src\Sweep.cpp" />
+    <ClCompile Include="..\..\src\ThreeOpt.cpp" />
+    <ClCompile Include="..\..\src\ThreePointMove.cpp" />
+    <ClCompile Include="..\..\src\TwoOpt.cpp" />
+    <ClCompile Include="..\..\src\TwoPointMove.cpp" />
+    <ClCompile Include="..\..\src\VRP.cpp" />
+    <ClCompile Include="..\..\src\VRPDebug.cpp" />
+    <ClCompile Include="..\..\src\VRPGraphics.cpp" />
+    <ClCompile Include="..\..\src\VRPIO.cpp" />
+    <ClCompile Include="..\..\src\VRPMove.cpp" />
+    <ClCompile Include="..\..\src\VRPNode.cpp" />
+    <ClCompile Include="..\..\src\VRPRoute.cpp" />
+    <ClCompile Include="..\..\src\VRPSet.cpp" />
+    <ClCompile Include="..\..\src\VRPSolution.cpp" />
+    <ClCompile Include="..\..\src\VRPSolvers.cpp" />
+    <ClCompile Include="..\..\src\VRPTabuList.cpp" />
+    <ClCompile Include="..\..\src\VRPTSPLib.cpp" />
+    <ClCompile Include="..\..\src\VRPUtils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\inc\ClarkeWright.h" />
+    <ClInclude Include="..\..\inc\Concatenate.h" />
+    <ClInclude Include="..\..\inc\CrossExchange.h" />
+    <ClInclude Include="..\..\inc\Flip.h" />
+    <ClInclude Include="..\..\inc\MoveString.h" />
+    <ClInclude Include="..\..\inc\OnePointMove.h" />
+    <ClInclude Include="..\..\inc\OrOpt.h" />
+    <ClInclude Include="..\..\inc\Osman.h" />
+    <ClInclude Include="..\..\inc\Postsert.h" />
+    <ClInclude Include="..\..\inc\Presert.h" />
+    <ClInclude Include="..\..\inc\randvals.h" />
+    <ClInclude Include="..\..\inc\RNG.h" />
+    <ClInclude Include="..\..\inc\Swap.h" />
+    <ClInclude Include="..\..\inc\SwapEnds.h" />
+    <ClInclude Include="..\..\inc\Sweep.h" />
+    <ClInclude Include="..\..\inc\ThreeOpt.h" />
+    <ClInclude Include="..\..\inc\ThreePointMove.h" />
+    <ClInclude Include="..\..\inc\TwoOpt.h" />
+    <ClInclude Include="..\..\inc\TwoPointMove.h" />
+    <ClInclude Include="..\..\inc\VRP.h" />
+    <ClInclude Include="..\..\inc\VRPConfig.h" />
+    <ClInclude Include="..\..\inc\VRPDebug.h" />
+    <ClInclude Include="..\..\inc\VRPGenerator.h" />
+    <ClInclude Include="..\..\inc\VRPH.h" />
+    <ClInclude Include="..\..\inc\VRPHeuristic.h" />
+    <ClInclude Include="..\..\inc\VRPMove.h" />
+    <ClInclude Include="..\..\inc\VRPNode.h" />
+    <ClInclude Include="..\..\inc\VRPRoute.h" />
+    <ClInclude Include="..\..\inc\VRPSolution.h" />
+    <ClInclude Include="..\..\inc\VRPTabuList.h" />
+    <ClInclude Include="..\..\inc\VRPUtils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\inc\VRPH.h.bak" />
+    <None Include="setup.py" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

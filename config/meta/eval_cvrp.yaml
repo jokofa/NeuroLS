@@ -1,0 +1,56 @@
+# @package _global_
+
+# tensorboard --host localhost --port 8080 --logdir=./outputs
+
+run_type: "test"
+debug_lvl: 0  # 0 disables debugging and verbosity completely, >1 activates additional debugging functionality
+global_seed: 1234
+cuda: True
+
+# global paths and logging
+log_lvl: INFO
+tb_log_path: 'logs/tb/'
+val_log_path: 'logs/val/'
+test_log_path: 'logs/test/'
+checkpoint_save_path: 'checkpoints/'
+
+# SET (two-opt)
+checkpoint_load_path: checkpoints/cvrp_100_uniform/SELECT_EPSILON-SET-ALL/ep80(last)_model_rew=0.003390.ckpt
+# LS
+#checkpoint_load_path: checkpoints/cvrp_100_uniform/SELECT_EPSILON-SELECT_LS-ALL/ep80(last)_model_rew=0.002205.ckpt
+# LS+
+#checkpoint_load_path: checkpoints/cvrp_100_uniform/SELECT_EPSILON-SELECT_LS+-ALL/ep22_model_rew=0.005784.ckpt
+
+
+monitor_cfg: {}
+checkpoint_cfg: {}
+trainer_cfg: {}
+strict_max_num: False
+#
+tester_cfg:
+  test_dataset_size: 512
+  test_batch_size: 8
+  render: False
+  num_render_eps: 0
+  #strict_max_num: False
+
+  test_env_cfg:
+    fixed_dataset: True
+    data_file_path: data/CVRP/cvrp50/data_val_seed123_size512_uniform.pt
+
+  env_kwargs:
+    construction_args:
+      method: 'savings'
+    num_steps: 100
+    acceptance_mode: 'SELECT_EPSILON'
+    operator_mode: 'SET' # 'SELECT_LS' # 'SELECT_LS+'
+    position_mode: 'ALL'
+    mode_args:
+      ls_ops: ['TWO_OPT']
+      accept_rule: 'BEST_ACCEPT'
+      random_shuffle: True
+      num_iters: 1
+      num_nodes_per_iter: 15
+      epsilon: 0.1
+      restart_at_step: 16  #8
+      restart_mode: "initial"

@@ -1,0 +1,30 @@
+# @package _global_
+# policy config
+
+policy: "DACT"
+
+# model params
+v_range: 6.0    # help='to control the entropy'
+DACTencoder_head_num: 4   # help='head number of DACT encoder'
+DACTdecoder_head_num: 4   # help='head number of DACT decoder'
+critic_head_num: 6  # help='head number of critic encoder'
+embedding_dim: 64  # help='dimension of input embeddings (NEF & PFE)'
+hidden_dim: 64  # help='dimension of hidden layers in Enc/Dec'
+n_encode_layers: 3  # help='number of stacked layers in the encoder'
+normalization: 'layer'  # help="normalization type, #'layer' (default) or 'batch'"
+
+# agent params
+RL_agent: 'ppo' # help='RL Training algorithm '
+gamma: 0.999    # help='reward discount factor for future rewards '
+K_epochs: 3     # help='mini PPO epoch '
+eps_clip: 0.1   # help='PPO clip ratio '
+T_train: 200   # help='number of itrations for training '
+n_step: 4     # help='n_step for return estimation '
+best_cl: False    # help='use best solution found in CL as initial solution for training '
+Xi_CL: 0.25     # help='hyperparameter of CL '
+lr_model: 1e-4   # help="learning rate for the actor network")
+lr_critic: 3e-5   # help="learning rate for the critic network")
+lr_decay: 0.985   # help='learning rate decay per epoch '
+max_grad_norm: 0.04   # help='maximum L2 norm for gradient clipping '
+epoch_end: 200   # help='maximum training epoch'
+epoch_size: 12000   # help='number of instances per epoch during training'

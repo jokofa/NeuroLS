@@ -1,0 +1,21 @@
+# @package _global_
+# policy config
+
+policy: "VNS"
+
+policy_cfg:
+  restart_at_step: 1
+
+env_kwargs:
+  acceptance_mode: 'ACCEPT_EPSILON'
+  operator_mode: 'SELECT_LS'
+  position_mode: 'ALL'
+  mode_args:
+    ls_ops: #
+    search_criterion: 'best'
+    selection_criterion: 'greedy'
+    epsilon: 0.001
+    restart_at_step: 1
+    restart_mode: "perturb"
+    restart_args:
+      iters: 3

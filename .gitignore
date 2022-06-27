@@ -1,0 +1,45 @@
+# pycharm
+**.idea
+**__pycache__
+
+# latex stuff
+**.fdb_latexmk
+**.xml
+**.toc
+**.aux
+**.nav
+**.snm
+**.gz
+**.vrb
+**.out
+**.hid
+**.bcf
+**.bbl
+**.blg
+**.fls
+
+# image data
+**.html
+
+# log files
+**.log
+
+# directories
+plots
+logs
+outputs**
+run_log
+
+# pickles
+**.pickle
+**.pkl
+
+# precompiled headers for the VS parser
+*.ipch
+*.db
+*.deb
+lib/routing/local_search/vrph/.vscode/settings.json
+lib/routing/local_search/vrph/.ipynb_checkpoints
+lib/routing/local_search/vrph/.vs
+lib/routing/local_search/vrph/.vscode/c_cpp_properties.json
+*.vsidx

@@ -1,0 +1,45 @@
+# @package _global_
+# problem args
+
+problem: "tsp"
+graph_size: 50
+coords_dist: 'uniform'
+
+# general VecEnv cfg
+env_cfg:
+  share_memory: False
+  fixed_dataset: False
+  create_nbh_graph: True    # automatically set to False for FFEncoder
+  k_nbh_frac: 0.25
+
+# RP Env cfg
+env_kwargs:
+  construction_args:
+    method: 'nn'
+  generator_args:
+    coords_sampling_dist: ${coords_dist}
+  sampling_args:
+    sample_size: 1024
+    graph_size: ${graph_size}
+  num_steps: 100
+  acceptance_mode: 'SELECT'
+  operator_mode: 'SET'
+  position_mode: 'RANDOM'
+  mode_args:
+    ls_ops: 'TWO_OPT'
+    accept_rule: 'BEST_ACCEPT'
+    random_shuffle: True
+    num_iters: 1
+    num_nodes_per_iter: 1
+
+# overwrites for validation env
+val_env_cfg:
+  fixed_dataset: True
+  data_file_path: data/TSP/tsp${graph_size}/data_val_seed123_size512_${coords_dist}.pt
+
+
+tester_cfg:
+  # overwrites for test env
+  test_env_cfg:
+    fixed_dataset: True
+    data_file_path: data/TSP/tsp${graph_size}/data_test_seed123_size512_${coords_dist}.pt

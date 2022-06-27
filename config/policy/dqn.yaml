@@ -1,0 +1,28 @@
+# @package _global_
+# policy config
+
+policy: "DQN"
+
+optimizer_cfg:
+  lr: 0.0005
+
+replay_buffer_cfg:
+  total_size: 32000
+  # tianshou uses the "proportional" variant of PER
+  # the parameters below come from the original PER paper
+  prioritized: True
+  alpha: 0.6
+  beta: 0.4
+
+policy_cfg:
+  discount_factor: 0.99
+  estimation_step: 3          # n-step return
+  target_update_freq: 500     # use target network if > 0
+  reward_normalization: False
+  is_double: True             # double DQN
+  exploration_noise: True     # this is set on training collector
+  epsilon: 0.95               # epsilon for epsilon greedy
+  epsilon_final: 0.05
+  epsilon_test: 0.0           # 0.0 is equal to completely greedy decoding
+  frac_epoch_final: 0.7       # fraction of max_epochs until which epsilon should be decayed
+  clamp_reward: 0.0

@@ -1,0 +1,4 @@
+**/Debug/**.obj
+**/Debug/
+**/x64
+**/x64/Debug/**

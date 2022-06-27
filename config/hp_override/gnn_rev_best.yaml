@@ -1,0 +1,20 @@
+# @package _global_
+
+has_overrides: True
+
+model_cfg:
+
+  encoder_args:
+    node_encoder_cfg:
+      num_nbh_layers: 3
+      num_sol_layers: 2
+      propagate_reverse: True
+      propagate_best: True
+      consolidate_nbh: True
+
+    sol_encoder_cfg:
+      propagate_best: ${model_cfg.encoder_args.node_encoder_cfg.propagate_best}
+
+  aggregator_args:
+    components: [ "node_feature_emb", "current_sol_emb", "best_sol_emb", "meta_feature_emb" ]
+    pooling: [ "mean", "mean", "mean", "none" ]

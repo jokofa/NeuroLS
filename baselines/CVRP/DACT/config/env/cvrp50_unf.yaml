@@ -1,0 +1,52 @@
+# @package _global_
+# problem args
+
+problem: "cvrp"
+graph_size: 50
+coords_dist: 'uniform'
+
+env_cfg:
+  step_method: '2_opt'    # ['2_opt','swap','insert']
+  init_val_met: 'greedy'  # ['random','greedy','seq']
+  perturb_eps: 250    # eval
+  #perturb_eps: 1e10   # train
+  dummy_rate: 0.5
+
+T_max: 5000   # number of steps for inference
+num_augments: 1  # number of data augments (<=8)
+
+
+# cvrp50_unf, T_max: 100, num_augments: 1
+#{'cost_mean': 12.66466519979761, 'cost_std': 1.557178724067726,
+# 'num_vehicles_mean': 8.263671875, 'num_vehicles_std': 0.48694739688593097, 'num_vehicles_median': 8.0,
+# 'run_time_mean': 0.11839450802654028, 'run_time_total': 60.61798810958862, 'num_infeasible': 0}
+
+# cvrp50_unf, T_max: 100, num_augments: 8
+#{'cost_mean': 12.67291049236158, 'cost_std': 1.6445447407840248,
+# 'num_vehicles_mean': 8.203125, 'num_vehicles_std': 0.4304680410611222, 'num_vehicles_median': 8.0,
+# 'run_time_mean': 0.2130025257356465, 'run_time_total': 109.057293176651, 'num_infeasible': 0}
+
+# cvrp50_unf, T_max: 1000, num_augments: 1
+# {'cost_mean': 11.998193783957078, 'cost_std': 1.4904099671759383,
+# 'num_vehicles_mean': 8.0546875, 'num_vehicles_std': 0.24394523431243742, 'num_vehicles_median': 8.0,
+# 'run_time_mean': 1.1841743579134345, 'run_time_total': 606.2972712516785, 'num_infeasible': 0}
+
+# cvrp50_unf, T_max: 1000, num_augments: 8
+# {'cost_mean': 12.289548925901073, 'cost_std': 1.6395140466610205,
+#  'num_vehicles_mean': 8.056640625, 'num_vehicles_std': 0.23115463352398838, 'num_vehicles_median': 8.0,
+#  'run_time_mean': 2.0744181321933866, 'run_time_total': 1062.102083683014, 'num_infeasible': 0}
+
+# cvrp50_unf, T_max: 1500, num_augments: 1
+#{'cost_mean': 11.943790462802127, 'cost_std': 1.4855794339003976,
+# 'num_vehicles_mean': 8.03515625, 'num_vehicles_std': 0.1841746130332232, 'num_vehicles_median': 8.0,
+# 'run_time_mean': 1.763016362208873, 'run_time_total': 902.664377450943, 'num_infeasible': 0}
+
+# cvrp50_unf, T_max: 1500, num_augments: 8
+#{'cost_mean': 12.243740415367512, 'cost_std': 1.6406442128135448,
+# 'num_vehicles_mean': 8.02734375, 'num_vehicles_std': 0.16308301363396954, 'num_vehicles_median': 8.0,
+# 'run_time_mean': 3.5564392684027553, 'run_time_total': 1820.8969054222107, 'num_infeasible': 0}
+
+# cvrp50_unf, T_max: 5000, num_augments: 1
+#{'cost_mean': 11.807379799063284, 'cost_std': 1.4579572078115521,
+# 'num_vehicles_mean': 8.015625, 'num_vehicles_std': 0.12401959270615269, 'num_vehicles_median': 8.0,
+# 'run_time_mean': 5.932258017826825, 'run_time_total': 3037.3161051273346, 'num_infeasible': 0}

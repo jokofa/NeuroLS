@@ -1,0 +1,12 @@
+# @package _global_
+# policy config
+
+policy: "SA"
+
+policy_cfg:
+  first_solutions_strategy: 'SAVINGS'
+  local_search_strategy: 'SIMULATED_ANNEALING'
+  time_limit: 2
+  solution_limit: #None
+  verbose: False
+  log_search: False
