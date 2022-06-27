@@ -59,10 +59,10 @@ checkpoint_cfg: {}
 trainer_cfg: {}
 #
 tester_cfg:
-  test_dataset_size: 4 #512
-  test_batch_size: 1 #8
-  render: True
-  num_render_eps: 2
+  test_dataset_size: 512
+  test_batch_size: 8
+  render: False
+  num_render_eps: 0
 
   test_env_cfg:
     fixed_dataset: True
