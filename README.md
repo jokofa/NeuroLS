@@ -43,7 +43,6 @@ python run_benchmark.py -r run_nls_rp.py -d data/CVRP/benchmark/uchoa/ -g n100 -
 ```
 
 ---
-### run benchmarks
 example rendered episodes on JSSP15x15 and CVRP100
 
 ![render_jssp15x15](render_ep_jssp.gif "Render Epoch JSSP 15x15")
