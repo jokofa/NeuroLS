@@ -71,9 +71,9 @@ class Model(nn.Module):
         self._ref_bs = None
 
         # get dims from obs and act space
-        n, f = self._observation_space.spaces['node_features'].shape
+        _, f = self._observation_space.spaces['node_features'].shape
         self.node_feature_dim = f
-        self.node_max_dim = n
+        self.node_max_dim = None
         self.action_output_dim = self._action_space.n
 
         # initialize encoder model
@@ -158,6 +158,7 @@ class Model(nn.Module):
         bs = obs.shape[0]
         recompute = True
         sample_size = kwargs.pop("sample_size", 0)
+        self.node_max_dim = obs.node_features.size(1)
 
         # collate and format batch            
         if self.encoder.uses_graph:
