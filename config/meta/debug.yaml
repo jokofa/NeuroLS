@@ -22,6 +22,10 @@ update_batch_size: 32 #256    # size of mini batch for model parameter updates
 val_dataset_size: 16 #32 #512
 val_batch_size: 8 #8 #32       # number of val envs
 
+
+env_kwargs:
+  report_on_improvement: False
+
 replay_buffer_cfg:
   total_size: 10000 #32000
 

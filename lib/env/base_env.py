@@ -4,6 +4,8 @@ from abc import abstractmethod
 from warnings import warn
 from typing import Optional, Tuple, List, Dict, Union, Any
 from timeit import default_timer
+import multiprocessing as mp
+import logging
 
 import numpy as np
 import gym
@@ -12,6 +14,8 @@ from torch.utils.data import DataLoader
 from lib.routing import RPInstance
 from lib.scheduling import JSSPInstance
 from lib.env.utils import DatasetChunk
+
+logger = logging.getLogger(__name__)
 
 
 class BaseEnv(gym.Env):
@@ -49,6 +53,7 @@ class BaseEnv(gym.Env):
                  debug: Union[bool, int] = False,
                  clamp: Optional[float] = None,
                  float_prec: np.dtype = np.float32,
+                 report_on_improvement: bool = False,
                  ):
         super(BaseEnv, self).__init__()
 
@@ -64,6 +69,7 @@ class BaseEnv(gym.Env):
         self.debug = 2 if isinstance(debug, bool) and debug else int(debug)
         self.clamp = clamp
         self.float_prec = float_prec
+        self.report_on_improvement = report_on_improvement
         self._distributed_dataset = fixed_dataset and not stand_alone
 
         self.data_generator = None
@@ -139,6 +145,7 @@ class BaseEnv(gym.Env):
         self._num_steps_no_imp = 0
         self._num_restarts = 0
         self._ls_op_cnt = {}
+        self._tinit = default_timer()
 
         # get data instance, init and set up model
         # also sets initial costs
@@ -149,6 +156,8 @@ class BaseEnv(gym.Env):
         self.previous_cost = None
         self.previous_op = 0
 
+        if self.report_on_improvement:
+            self._report_solution()
         if self.enable_render:
             if self.viewer is not None:
                 self.viewer.save()
@@ -161,7 +170,6 @@ class BaseEnv(gym.Env):
             self._render_cnt += 1
 
         self._is_reset = True
-        self._tinit = default_timer()
         return self._get_observation()
 
     def step(self, action: Union[np.ndarray, int]):
@@ -177,6 +185,7 @@ class BaseEnv(gym.Env):
             - info dict
         """
         assert self._is_reset
+        self._current_step += 1
 
         if self.debug > 1:
             faulthandler.enable()
@@ -196,6 +205,8 @@ class BaseEnv(gym.Env):
             if self.current_sol_seq is not None:
                 self.best_sol_seq = self.current_sol_seq.copy()
             self._num_steps_no_imp = 0
+            if self.report_on_improvement:
+                self._report_solution()
         else:
             self._num_steps_no_imp += 1
 
@@ -211,8 +222,6 @@ class BaseEnv(gym.Env):
                                 if self.fixed_dataset or self.stand_alone else None)
             info['num_restarts'] = self._num_restarts
             info['ls_op_cnt'] = self._ls_op_cnt
-
-        self._current_step += 1
 
         return self._get_observation(), reward, done, info
 
@@ -313,6 +322,28 @@ class BaseEnv(gym.Env):
         # clean up
         self.data_samples = None
         self._render_cnt = 0
+
+    def _report_solution(self):
+        pid = mp.current_process().pid
+        # format solution
+        sol = self.best_sol_seq.copy()
+        sol = sol[sol.sum(-1) != 0]
+        p_sol = []
+        for s in sol:
+            _s = []
+            for i in range(1, len(s)):
+                if s[i] == 0:
+                    _s.append(s[i - 1])
+                    _s.append(0)
+                    break
+                else:
+                    _s.append(s[i - 1])
+            p_sol.append(_s)
+
+        msg = f"process {pid} ({self.PROBLEM.upper()}) new best solution found at " \
+              f"iter={self._current_step} (time={default_timer()-self._tinit :.6f}) " \
+              f"with cost={self.best_cost :.8f}:  {p_sol}"
+        logger.warning(msg)
 
     @abstractmethod
     def _init_generator(self, problem: str, **kwargs):

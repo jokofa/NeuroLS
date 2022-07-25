@@ -39,6 +39,7 @@ tester_cfg:
     data_file_path: data/CVRP/cvrp50/data_val_seed123_size512_uniform.pt
 
   env_kwargs:
+    report_on_improvement: False
     construction_args:
       method: 'savings'
     num_steps: 100
