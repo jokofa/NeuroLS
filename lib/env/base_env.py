@@ -185,7 +185,6 @@ class BaseEnv(gym.Env):
             - info dict
         """
         assert self._is_reset
-        self._current_step += 1
 
         if self.debug > 1:
             faulthandler.enable()
@@ -223,6 +222,7 @@ class BaseEnv(gym.Env):
             info['num_restarts'] = self._num_restarts
             info['ls_op_cnt'] = self._ls_op_cnt
 
+        self._current_step += 1
         return self._get_observation(), reward, done, info
 
     def render(self, mode: str = 'human', **kwargs):
@@ -341,7 +341,7 @@ class BaseEnv(gym.Env):
             p_sol.append(_s)
 
         msg = f"process {pid} ({self.PROBLEM.upper()}) new best solution found at " \
-              f"iter={self._current_step} (time={default_timer()-self._tinit :.6f}) " \
+              f"iter={self._current_step+1} (time={default_timer()-self._tinit :.6f}) " \
               f"with cost={self.best_cost :.8f}:  {p_sol}"
         logger.warning(msg)
 
