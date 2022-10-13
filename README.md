@@ -2,7 +2,11 @@
 This is the repository to the corresponding paper
 "Learning to Control Local Search for Combinatorial Optimization"
 
-It implements a Neural Local Search solver combining a GNN-based
+- ECML-PKDD 2022: [https://2022.ecmlpkdd.org/wp-content/uploads/2022/09/sub_689.pdf](https://2022.ecmlpkdd.org/wp-content/uploads/2022/09/sub_689.pdf)
+- arXiv (with appendix): [https://arxiv.org/abs/2206.13181](https://arxiv.org/abs/2206.13181)
+
+
+We implement a Neural Local Search solver combining a GNN-based
 learned meta-controller (meta-heuristic) with local search for 
 routing problems (via VRPH) and 
 job shop scheduling problems (custom solver implementation)
@@ -41,6 +45,19 @@ To run NeuroLS on CVRP Uchoa benchmark instances group n100 for 200 steps
 ```
 python run_benchmark.py -r run_nls_rp.py -d data/CVRP/benchmark/uchoa/ -g n100 -p cvrp -m nls -e eval_cvrp --args "env=cvrp100_unf" -n 200
 ```
+
+---
+### Please cite us:
+
+```
+@inproceedings{vrain2022knowledge,
+  title={Learning to Control Local Search for Combinatorial Optimization},
+  author={Falkner, {Jonas K.} and Thyssens, Daniela and Bdeir, Ahmad and Schmidt-Thieme, Lars},
+  booktitle={Proceedings of the European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML PKDD)},
+  year={2022}
+}
+```
+
 
 ---
 example rendered episodes on JSSP15x15 and CVRP100
