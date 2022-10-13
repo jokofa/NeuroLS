@@ -50,7 +50,7 @@ python run_benchmark.py -r run_nls_rp.py -d data/CVRP/benchmark/uchoa/ -g n100 -
 ### Please cite us:
 
 ```
-@inproceedings{vrain2022knowledge,
+@inproceedings{falkner2022learning,
   title={Learning to Control Local Search for Combinatorial Optimization},
   author={Falkner, {Jonas K.} and Thyssens, Daniela and Bdeir, Ahmad and Schmidt-Thieme, Lars},
   booktitle={Proceedings of the European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases (ECML PKDD)},
